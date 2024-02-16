@@ -2,6 +2,7 @@ import { useState } from 'react'
 import * as finnhub from 'finnhub';
 import CompanyDetails from './CompanyDetails';
 import { DebounceInput } from 'react-debounce-input';
+import './app.css';
 
 
 
@@ -18,7 +19,7 @@ function App() {
     });
   }
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = async (e) => {
     setState(e.target.value)
     onsubmitHandler(e.target.value);
     return;
@@ -31,14 +32,12 @@ function App() {
         <div style={{ width: '70%', margin: 'auto' }}>
           <DebounceInput
             onChange={onChangeHandler}
-            style={{ width: '100%', fontSize: '2rem', padding: '0.5rem 1rem', borderRadius: '10px' }}
-            placeholder={'Company'}
+            style={{ width: '100%', fontSize: '2rem', padding: '1rem 1.5rem', borderRadius: '10px' }}
+            placeholder={'Search a Company (Ex- AAPL)'}
             debounceTimeout={300}
           />
-
-          {/* <input style={{ width: '100%', fontSize: '2rem', padding: '0.5rem 1rem', borderRadius: '10px' }} value={state} type="text" placeholder='company name' onChange={(e) => setState(e.target.value)} /> */}
         </div>
-        <CompanyDetails details={details} />
+        <CompanyDetails details={details} state={state} />
       </div>
     </>
   )

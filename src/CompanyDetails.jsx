@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 
 
 
-export default function CompanyDetails({ details }) {
+export default function CompanyDetails({ details, state }) {
     function createData(name, calories) {
         return { name, calories };
     }
@@ -18,12 +18,15 @@ export default function CompanyDetails({ details }) {
         createData('Country', details.country),
         createData('Currency of Country', details.currency),
         createData('Contact Number', details.phone),
+        createData('Industry', details.finnhubIndustry),
         createData('Share Outstanding', details.shareOutstanding),
+        createData('Market Capital', details.marketCapitalization),
         createData('Website', details.weburl),
     ];
 
-    if (details.name === undefined)
+    if (details.name === undefined) {
         return <></>
+    }
 
     return (
         <div style={{ width: '60%', margin: 'auto', textAlign: 'center', padding: '2rem 0' }}>
